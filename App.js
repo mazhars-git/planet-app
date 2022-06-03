@@ -21,7 +21,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={{color: colors.white, fontFamily: typography.bold, fontSize: spacing[4]}}>Open up App.js to start working on your app!</Text>
+      <Text preset="h1">Open up App.js to start working on your app!</Text>
       <Text style={{color: colors.white, marginTop: spacing[4], fontFamily: 'Spartan-Bold', fontSize: spacing[4]}}>Hello World</Text>
       <StatusBar style="auto" />
     </View>
@@ -31,7 +31,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.lightRed,
+    backgroundColor: colors.black,
     alignItems: 'center',
     justifyContent: 'center',
   },
