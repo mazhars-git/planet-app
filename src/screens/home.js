@@ -1,11 +1,12 @@
-import { View } from 'react-native'
+import { SafeAreaView } from 'react-native'
 import React from 'react'
 import Text from '../components/text/text';
+import PlanetHeader from '../components/planet-header';
 
 export default function Home() {
   return (
-    <View>
-      <Text>Home</Text>
-    </View>
+    <SafeAreaView>
+      <PlanetHeader />
+    </SafeAreaView>
   )
 }

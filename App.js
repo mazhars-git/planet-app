@@ -26,11 +26,14 @@ export default function App() {
   }
 
   return (
+    <>
     <NavigationContainer theme={DarkTheme}>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="Home" component={Home} />
       </Stack.Navigator>
     </NavigationContainer>
+    <StatusBar style='light'/>
+    </>
   );
 }
 
