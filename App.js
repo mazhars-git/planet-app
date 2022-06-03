@@ -6,6 +6,12 @@ import Text from './src/components/text/text';
 import { colors } from './src/theme/colors';
 import { spacing } from './src/theme/spacing';
 import { typography } from './src/theme/typography';
+import { NavigationContainer, DarkTheme } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Home from './src/screens/home';
+
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
 
@@ -20,18 +26,17 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <Text preset="h1" style={{color: 'green'}}>Open up App.js to start working on your app!</Text>
-      <Text style={{color: colors.white, marginTop: spacing[4], fontFamily: 'Spartan-Bold', fontSize: spacing[4]}}>Hello World</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer theme={DarkTheme}>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name="Home" component={Home} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.black,
     alignItems: 'center',
     justifyContent: 'center',
   },
