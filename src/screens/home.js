@@ -18,7 +18,7 @@ export default function Home({navigation}) {
           renderItem= {({item}) =>{
             return(
               <Pressable onPress={() => {
-                  navigation.navigate("Details")
+                  navigation.navigate("Details", {planet: item})
               }} style={styles.item}>
                   <View style={{flexDirection: 'row', alignItems: 'center'}}>
                     <View style={[styles.circle, {backgroundColor: item.color}]} />
