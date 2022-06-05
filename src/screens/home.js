@@ -5,6 +5,7 @@ import PlanetHeader from '../components/planet-header';
 import { colors } from '../theme/colors';
 import { PLANET_LIST } from '../data/planet-list';
 import { spacing } from '../theme/spacing';
+import { AntDesign } from '@expo/vector-icons';
 
 export default function Home() {
   return (
@@ -17,13 +18,18 @@ export default function Home() {
           renderItem= {({item}) =>{
             return(
               <View style={styles.item}>
-                  <View style={[styles.circle, {backgroundColor: item.color}]} />
-                  <Text preset="h4" style={styles.itemName}>
-                      {item.name}
-                  </Text>
+                  <View>
+                    <View style={[styles.circle, {backgroundColor: item.color}]} />
+                    <Text preset="h4" style={styles.itemName}>
+                        {item.name}
+                    </Text>
+                  </View>
+                  <AntDesign name="right" size={18} color="white" />
               </View>
             );
           }}
+
+          ItemSeparatorComponent={() =><View style={styles.separator} />}
       />
     </SafeAreaView>
   )
@@ -46,6 +52,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: spacing[4],
+    justifyContent: 'space-between',
   },
 
   itemName:{
@@ -54,6 +61,11 @@ const styles = StyleSheet.create({
   },
 
   list:{
-    padding: spacing[5],
+    padding: spacing[4],
+  },
+
+  separator:{
+    borderBottomColor: colors.white,
+    borderWidth: 0.5, 
   }
 })
