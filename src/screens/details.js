@@ -7,8 +7,7 @@ import { colors } from '../theme/colors'
 export default function Details() {
   return (
     <SafeAreaView style= {styles.container}>
-        <PlanetHeader />
-        <Text>Details</Text>
+        <PlanetHeader backBtn={true} />
     </SafeAreaView>
   )
 }
