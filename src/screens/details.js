@@ -1,4 +1,4 @@
-import { View, SafeAreaView, StyleSheet, ScrollView } from 'react-native'
+import { View, SafeAreaView, StyleSheet, ScrollView, Pressable } from 'react-native'
 import React from 'react'
 import Text from '../components/text/text'
 import PlanetHeader from '../components/planet-header'
@@ -8,7 +8,7 @@ import { spacing } from './../theme/spacing';
 
 export default function Details({navigation, route}) {
   const planet = route.params.planet;
-  const {name} = planet;
+  const {name, description} = planet;
   console.log(planet);
 
   const renderImage = (name) =>{
@@ -38,6 +38,18 @@ export default function Details({navigation, route}) {
             <View style= {styles.imageView}>
                 {renderImage(name)}
             </View>
+            <View style= {styles.detailView}>
+              <Text preset="h1" style={styles.name}>
+                  {name}
+              </Text>
+              <Text style={styles.description}>
+                  {description}
+              </Text>
+              <Pressable style = {styles.source}>
+                  <Text>Source: </Text>
+                  <Text preset="h4" style={styles.wikipedia}>Wikipedia</Text>
+              </Pressable>
+            </View>
         </ScrollView>
     </SafeAreaView>
   )
@@ -49,8 +61,30 @@ const styles = StyleSheet.create({
 
     },
     imageView: {
-      padding: spacing[5],
+      margin: spacing[5],
       alignItems: 'center',
       justifyContent: 'center',
+    },
+    detailView: {
+      alignItems: 'center',
+      marginVertical: spacing[4],
+      marginHorizontal: spacing[5],
+
+    },
+    name: {
+      textTransform: 'uppercase'
+    },
+    description: {
+      textAlign: 'center',
+      lineHeight: 21,
+      marginVertical: spacing[3]
+    },
+    source: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
+    wikipedia: {
+      textDecoration: 'underlain',
+      fontWeight: 'bold'
     }
 })
