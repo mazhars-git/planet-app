@@ -1,4 +1,12 @@
-import { View, SafeAreaView, StyleSheet, ScrollView, Pressable } from 'react-native'
+import { 
+  View, 
+  SafeAreaView, 
+  StyleSheet, 
+  ScrollView, 
+  Pressable,
+  Linking
+
+} from 'react-native'
 import React from 'react'
 import Text from '../components/text/text'
 import PlanetHeader from '../components/planet-header'
@@ -15,11 +23,18 @@ const PlanetSection = ({title, value}) =>{
   )
 }
 
-export default function Details({navigation, route}) {
+export default function Details({route}) {
   const planet = route.params.planet;
-  const {name, description, rotationTime, revolutionTime, radius, avgTemp} = planet;
+  const {
+    name, 
+    description, 
+    rotationTime, 
+    revolutionTime, 
+    radius, 
+    avgTemp, 
+    wikiLink} = planet;
 
-  const renderImage = (name) =>{
+  const renderImage = () =>{
     switch (name) {
       case "mercury":
         return <MercurySvg />;
@@ -38,7 +53,12 @@ export default function Details({navigation, route}) {
       case "venus":
         return <VenusSvg />;
     }
-  }  
+  }
+  
+  const onPressLink = () =>{
+    Linking.openURL(wikiLink)
+  }
+
   return (
     <SafeAreaView style= {styles.container}>
         <PlanetHeader backBtn={true} />
@@ -54,7 +74,7 @@ export default function Details({navigation, route}) {
               <Text style={styles.description}>
                   {description}
               </Text>
-              <Pressable style = {styles.source}>
+              <Pressable onPress={onPressLink} style = {styles.source}>
                   <Text>Source: </Text>
                   <Text preset="h4" style={styles.wikipedia}>Wikipedia</Text>
               </Pressable>
