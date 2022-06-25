@@ -36,6 +36,16 @@ export default function Home({navigation}) {
     );
    }
 
+   const searchFilter = (text) =>{
+    const filteredList = PLANET_LIST.filter((item) => {
+      const itemName = item.name.toLocaleLowerCase()
+      const userInput = text.toLocaleLowerCase()
+
+      return itemName.indexOf(userInput) > -1;
+    })
+
+    console.log("List:", filteredList)
+   }
 
 
   return (
@@ -47,6 +57,7 @@ export default function Home({navigation}) {
         placeholderTextColor={colors.gray}
         autoCorrect={false}
         style={styles.searchInput}
+        onChangeText = {(text) => searchFilter(text)}
       />
 
       <FlatList
