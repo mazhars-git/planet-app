@@ -1,5 +1,5 @@
 import { View, FlatList, SafeAreaView, StyleSheet, Pressable, TextInput } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import Text from '../components/text/text';
 import PlanetHeader from '../components/planet-header';
 import { colors } from '../theme/colors';
@@ -28,7 +28,7 @@ const PlanetItem = ({item}) =>{
 
 
 export default function Home({navigation}) {
-
+    const [list, setList] = useState(PLANET_LIST);
     const renderItem = ({item}) =>{
     
     return(
@@ -44,6 +44,7 @@ export default function Home({navigation}) {
       return itemName.indexOf(userInput) > -1;
     })
 
+    setList(filteredList);
     console.log("List:", filteredList)
    }
 
@@ -62,7 +63,7 @@ export default function Home({navigation}) {
 
       <FlatList
           contentContainerStyle={styles.list}
-          data={PLANET_LIST}
+          data={list}
           keyExtractor={(item) => item.name}
           renderItem= {renderItem}
 
